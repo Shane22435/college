@@ -36,6 +36,8 @@ enum BookRating {
 }
 
 class Book {
+    // instance variables
+    // all set to private so they cannot be changed after allocation
     private String title ;
     private String author;
     private BookGenre genre;
@@ -45,6 +47,7 @@ class Book {
     private BookRating rating;
 
     // getters
+    // all set to protected because they are only used in this class
     protected String getTitle(){
         return this.title;
     }
@@ -68,11 +71,15 @@ class Book {
     }
 
     // constructors
+    // all set to protected because they do not need to be used outside of this class
+    // default constructor
     protected Book(String title, String author, BookGenre genre){
         this.title = title;
         this.author = author;
         this.genre = genre;
     }
+
+    // constructor with PublishedDate
 
     protected Book(String title, String author, BookGenre genre, int PublishedDate ){
         this.title = title;
@@ -80,6 +87,8 @@ class Book {
         this.PublishedDate = PublishedDate;
         this.genre = genre;
     }
+
+    // constructor with PublishedDate and ReadDate
     protected Book(String title, String author,BookGenre genre, int PublishedDate,int ReadDate, BookMedium Medium, BookRating rating){
         this.title = title;
         this.author = author;
@@ -98,6 +107,7 @@ class Book {
      * If read date, read medium, and rating is present -
      * Title by Author (Year of PublishedDate) - read in Year of Reading, rated rating/5
      */
+    
     public String toString(){
         if (this.getPublishedDate() == 0){
             return this.getTitle() + " by " + this.getAuthor() ;
