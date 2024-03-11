@@ -1,9 +1,10 @@
 import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
+import java.lang.Comparable;
 
 
-class Value{
+class Value implements Comparable<Value>{
 
 
     private final int value;
@@ -12,8 +13,12 @@ class Value{
     Value(int value) {
         this.value = value;
     }
+
+    public int getValue() {
+        return this.value;
+    }
     
-    public String ToString() {
+    public String toString() {
         return String.valueOf(this.value);
     }
 
@@ -43,27 +48,31 @@ class Value{
         }
 
     }
+
+    public int compareTo(Value o) {
+            if (SORT_LOWER) {
+                if (this.value < o.value) {
+                    return -1;
+                } else if (this.value > o.value) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            } else {
+                if (this.value < o.value) {
+                    return 1;
+                } else if (this.value > o.value) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        }
 }
 
-
-class MyFancyDataStructure{
-
+class MyFancyDataStructure {
     public static void main(String[] args) {
-        Value value1 = new Value(1);
-        Value value2 = new Value(2);
-        Value value3 = new Value(3);
-        System.out.println(value1.ToString());
-        System.out.println(value2.ToString());
-        System.out.println(value3.ToString());
-        Value.setSortLower(true);
-        System.out.println(Value.isSortLower());
-        System.out.println(Value.isSortHigher());
-        Value.setSortHigher(true);
-        System.out.println(Value.isSortLower());
-        System.out.println(Value.isSortHigher()); 
-        
-        List<Value> list = Arrays.asList(
-        new Value(2), new Value(3), new Value(1));
+        List<Value> list = Arrays.asList(new Value(2), new Value(3), new Value(1));
 
         Value.setSortLower();
         Collections.sort(list);

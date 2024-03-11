@@ -1,9 +1,9 @@
 
-import java.util.Stack;  
+import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.LinkedHashMap; // Add missing import statement
+import java.util.LinkedHashMap;
 /**
  * Class Itemi
  * Represents Food Items
@@ -92,7 +92,7 @@ class Checkout {
         return "checkout:" + this.checkout.toString();
     }
 }
-    
+
 
 class Bill {
     private final Map<String,Integer> basket;
